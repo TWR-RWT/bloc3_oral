@@ -46,7 +46,7 @@ def create_user():
 
 
 
-@app.route("/login", methods=['POST'])
+@app.route("/login", methods=['POST'])###################ok
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -78,13 +78,13 @@ def login():
 
 
 
-@app.route("/logout")
+@app.route("/logout")##########ok
 def logout():
     session.clear()
     flash('Vous avez été déconnecté')
     return redirect(url_for('index'))
 
-@app.route("/connexion")
+@app.route("/connexion")###############ok
 def connexion():
     return render_template('/authentification/login.html')
 

@@ -4,12 +4,18 @@
         <li class="nav-item">
             <a class="navbar-brand" href="{{ url_for('index') }}">Mercadona</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-item nav-link" href="{{ url_for('index') }}">Catalogue</a>
+        </li>
         {% if session['logged_in'] %}
         <li class="nav-item">
             <a class="nav-item nav-link" href="{{ url_for('logout') }}">Deconnexion</a>
         </li>
         <li class="nav-item">
-            <a class="nav-item nav-link" href="">Comptes</a>
+            <a class="nav-item nav-link" href="{{ url_for('produit') }}">Produit</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-item nav-link" href="{{ url_for('produits_liste_promotions') }}">Promotions</a>
         </li>
 
         {% else %}

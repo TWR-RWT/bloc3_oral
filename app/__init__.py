@@ -19,6 +19,7 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 
 app.secret_key = "very-secret-key"
+app.config['UPLOAD_FOLDER'] = "app/static/images"
 
 # Charger les variables d'environnement depuis le fichier .env
 load_dotenv()
@@ -69,9 +70,9 @@ def token_required_auth(func):
 @app.route("/")
 def index():
     if not session.get('logged_in'):
-        return render_template('/main/catalogues.html')
+        return redirect(url_for('products'))
     else:
-        return render_template('/authentification/comptes.html')
+        return redirect(url_for('products'))
 
 from app import authentification
 from app import main

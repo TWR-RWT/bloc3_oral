@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="col-md-12 px-2 d-flex flex-column justify-content-center align-items-center">
+
+    <h2>Créer un nouveau produit</h2>
+    <form method="POST" action="{{ url_for('create_product') }}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="libelle">Libellé</label>
+            <input type="text" class="form-control" id="libelle" name="libelle" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="prix">Prix</label>
+            <input type="number" class="form-control" id="prix" name="prix" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control" id="image" name="image" required>
+        </div>
+        <div class="form-group">
+            <label for="categorie">Catégorie</label>
+            <input type="text" class="form-control" id="categorie" name="categorie" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Créer le produit</button>
+    </form>
+
+</div>
+
+{% endblock %}

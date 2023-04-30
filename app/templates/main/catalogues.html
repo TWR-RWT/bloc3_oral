@@ -1,4 +1,40 @@
 {% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/catalogues.css') }}">
+{% endblock %}
+
 {% block body %}
 
+<h1>Liste des produits</h1>
+
+<div class="filters">
+    <label for="category-filter">Filtrer par catégorie :</label>
+    <select id="category-filter">
+        <option value="">Toutes les catégories</option>
+        {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div id="product-cards">
+    {% for product in products %}
+        <div class="product-card" data-category="{{ product[5] }}">
+            {% if product[4] %}
+                <img src="{{ url_for('static', filename='images/' + product[4]) }}" alt="{{ product[1] }} image" width="200" height="200">
+            {% endif %}
+            <h3>{{ product[1] }}</h3>
+            <p class="description">{{ product[2] }}</p>
+            {% if product[7] %}
+                <p class="price discount"><strong style="color: red">{{ '%.2f'|format(product[3] * (100 - product[10]) / 100)}}€</strong> au lieu de <del>{{ product[3] }}</del>€</p>
+            {% else %}
+                <p class="price">{{ product[3] }}€</p>
+            {% endif %}
+            <p class="category">Catégorie: {{ product[5] }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{{ url_for('static', filename='js/catalogues.js') }}"></script>
 {% endblock %}
