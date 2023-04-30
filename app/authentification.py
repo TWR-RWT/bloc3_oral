@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 
 
 @app.route('/users', methods=['POST']) ###############ok
-#@token_required_auth
+@token_required_auth
 def create_user():
     if request.method == 'POST':
         username = request.form['username']
